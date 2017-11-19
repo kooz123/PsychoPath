@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,8 +20,64 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCq-ls-pf1">
+                                <rect key="frame" x="157" y="304" width="62" height="60"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="40"/>
+                                <state key="normal" title="GO"/>
+                                <connections>
+                                    <action selector="doExploit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xe1-eZ-kYy"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StreamingZip Path traversal exploit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjp-9Q-rXR">
+                                <rect key="frame" x="54" y="51" width="267" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="supports 32 and 64 bit iOS 10 to 11.0.3 devices" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Lj-zO-aTc">
+                                <rect key="frame" x="52" y="80" width="270" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="tnj-UC-bUm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exploit created by Sem Voigtlander" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVd-xN-LRc">
+                                <rect key="frame" x="54" y="543" width="268" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="With thanks to Luca Todesco from KJC Research" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6o-zl-dLk">
+                                <rect key="frame" x="80" y="579" width="215" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="aFg-U8-bjA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bjp-9Q-rXR" firstAttribute="centerX" secondItem="KCq-ls-pf1" secondAttribute="centerX" id="5bP-kH-diZ"/>
+                            <constraint firstItem="2Lj-zO-aTc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HH1-H3-aEg"/>
+                            <constraint firstItem="2Lj-zO-aTc" firstAttribute="top" secondItem="bjp-9Q-rXR" secondAttribute="bottom" constant="8" symbolic="YES" id="Jx4-da-Ahx"/>
+                            <constraint firstItem="bjp-9Q-rXR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="31" id="ODt-EY-9sO"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="I6o-zl-dLk" secondAttribute="bottom" constant="67" id="Od5-8C-Cup"/>
+                            <constraint firstItem="bjp-9Q-rXR" firstAttribute="centerX" secondItem="2Lj-zO-aTc" secondAttribute="centerX" id="XmG-Oa-Vb1"/>
+                            <constraint firstItem="KCq-ls-pf1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ahG-mU-OYN"/>
+                            <constraint firstItem="pVd-xN-LRc" firstAttribute="centerX" secondItem="I6o-zl-dLk" secondAttribute="centerX" id="fZg-RC-2eo"/>
+                            <constraint firstItem="I6o-zl-dLk" firstAttribute="top" secondItem="pVd-xN-LRc" secondAttribute="bottom" constant="15" id="hyC-ON-b5p"/>
+                            <constraint firstItem="KCq-ls-pf1" firstAttribute="centerX" secondItem="pVd-xN-LRc" secondAttribute="centerX" id="iYi-Is-qxD"/>
+                            <constraint firstItem="2Lj-zO-aTc" firstAttribute="trailing" secondItem="pVd-xN-LRc" secondAttribute="trailing" id="lsI-9c-Mt7"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="exploit" destination="KCq-ls-pf1" id="5Rx-Gp-BU8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
