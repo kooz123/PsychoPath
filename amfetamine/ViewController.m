@@ -55,6 +55,7 @@
     printf("Unzipping payload into /Applications.\n");
     dispatch_async(dispatch_get_main_queue(), ^(void){
         [_exploit setTitle:@"Extracting payload" forState:UIControlStateDisabled];
+    _exploit.font = [UIFont systemFontOfSize:30];
     });
     
     /* Give the extraction some time (10 seconds), if the app's still not in /Applications the extraction failed and thus the exploit */
