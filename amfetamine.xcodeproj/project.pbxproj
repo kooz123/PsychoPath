@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1750BBA71FCB677E000D122E /* Credits.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1750BBA61FCB677E000D122E /* Credits.storyboard */; };
+		17BFC4731FD0FEA4004FFB3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17BFC4721FD0FEA4004FFB3F /* Main.storyboard */; };
 		1D23F5591FC1D667006EC156 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23F5581FC1D667006EC156 /* main.m */; };
 		1D23F55C1FC1D667006EC156 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23F55B1FC1D667006EC156 /* AppDelegate.m */; };
 		1D23F55F1FC1D667006EC156 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23F55E1FC1D667006EC156 /* ViewController.m */; };
-		1D23F5621FC1D667006EC156 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D23F5601FC1D667006EC156 /* Main.storyboard */; };
 		1D23F5651FC1D668006EC156 /* amfetamine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1D23F5631FC1D668006EC156 /* amfetamine.xcdatamodeld */; };
 		1D23F5671FC1D668006EC156 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D23F5661FC1D668006EC156 /* Assets.xcassets */; };
 		1D23F56A1FC1D668006EC156 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D23F5681FC1D668006EC156 /* LaunchScreen.storyboard */; };
 		1D23F5751FC1D668006EC156 /* amfetamineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23F5741FC1D668006EC156 /* amfetamineTests.m */; };
 		1D23F5801FC1D668006EC156 /* amfetamineUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23F57F1FC1D668006EC156 /* amfetamineUITests.m */; };
-		1D23F5901FC1D9E5006EC156 /* StreamingZip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D23F58F1FC1D9E5006EC156 /* StreamingZip.framework */; };
-		1D23F5921FC1DB56006EC156 /* StreamingUnzipper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23F5911FC1DB56006EC156 /* StreamingUnzipper.m */; };
 		1D23F5941FC1E815006EC156 /* Payload.zip in Resources */ = {isa = PBXBuildFile; fileRef = 1D23F5931FC1E815006EC156 /* Payload.zip */; };
+		1D4D891B1FCF4F29005432F0 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4D891A1FCF4F29005432F0 /* CoreMedia.framework */; };
+		1D4D891F1FCF53B0005432F0 /* PrivateAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4D891E1FCF53B0005432F0 /* PrivateAPIManager.m */; };
+		1DC0103E1FCDF1570053903B /* libsandbox.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC0103D1FCDF1570053903B /* libsandbox.1.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,14 +40,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1750BBA61FCB677E000D122E /* Credits.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Credits.storyboard; sourceTree = "<group>"; };
+		17BFC4721FD0FEA4004FFB3F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1D23F5541FC1D667006EC156 /* amfetamine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = amfetamine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D23F5581FC1D667006EC156 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1D23F55A1FC1D667006EC156 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D23F55B1FC1D667006EC156 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1D23F55D1FC1D667006EC156 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1D23F55E1FC1D667006EC156 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		1D23F5611FC1D667006EC156 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D23F5641FC1D668006EC156 /* amfetamine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = amfetamine.xcdatamodel; sourceTree = "<group>"; };
 		1D23F5661FC1D668006EC156 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D23F5691FC1D668006EC156 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,10 +57,12 @@
 		1D23F57B1FC1D668006EC156 /* amfetamineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = amfetamineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D23F57F1FC1D668006EC156 /* amfetamineUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = amfetamineUITests.m; sourceTree = "<group>"; };
 		1D23F5811FC1D668006EC156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1D23F58D1FC1D830006EC156 /* StreamingUnzipper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StreamingUnzipper.h; sourceTree = "<group>"; };
 		1D23F58F1FC1D9E5006EC156 /* StreamingZip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = StreamingZip.framework; sourceTree = "<group>"; };
-		1D23F5911FC1DB56006EC156 /* StreamingUnzipper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamingUnzipper.m; sourceTree = "<group>"; };
 		1D23F5931FC1E815006EC156 /* Payload.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Payload.zip; sourceTree = "<group>"; };
+		1D4D891A1FCF4F29005432F0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		1D4D891E1FCF53B0005432F0 /* PrivateAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateAPIManager.m; sourceTree = "<group>"; };
+		1D4D89201FCF53F8005432F0 /* PrivateAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateAPIManager.h; sourceTree = "<group>"; };
+		1DC0103D1FCDF1570053903B /* libsandbox.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsandbox.1.tbd; path = usr/lib/libsandbox.1.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D23F5901FC1D9E5006EC156 /* StreamingZip.framework in Frameworks */,
+				1D4D891B1FCF4F29005432F0 /* CoreMedia.framework in Frameworks */,
+				1DC0103E1FCDF1570053903B /* libsandbox.1.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,19 +117,18 @@
 			isa = PBXGroup;
 			children = (
 				1D23F5931FC1E815006EC156 /* Payload.zip */,
-				1D23F58D1FC1D830006EC156 /* StreamingUnzipper.h */,
-				1D23F5911FC1DB56006EC156 /* StreamingUnzipper.m */,
 				1D23F55A1FC1D667006EC156 /* AppDelegate.h */,
 				1D23F55B1FC1D667006EC156 /* AppDelegate.m */,
 				1D23F55D1FC1D667006EC156 /* ViewController.h */,
 				1D23F55E1FC1D667006EC156 /* ViewController.m */,
-				1D23F5601FC1D667006EC156 /* Main.storyboard */,
-				1750BBA61FCB677E000D122E /* Credits.storyboard */,
+				17BFC4721FD0FEA4004FFB3F /* Main.storyboard */,
 				1D23F5661FC1D668006EC156 /* Assets.xcassets */,
 				1D23F5681FC1D668006EC156 /* LaunchScreen.storyboard */,
 				1D23F56B1FC1D668006EC156 /* Info.plist */,
 				1D23F5631FC1D668006EC156 /* amfetamine.xcdatamodeld */,
 				1D23F5571FC1D667006EC156 /* Supporting Files */,
+				1D4D89201FCF53F8005432F0 /* PrivateAPIManager.h */,
+				1D4D891E1FCF53B0005432F0 /* PrivateAPIManager.m */,
 			);
 			path = amfetamine;
 			sourceTree = "<group>";
@@ -161,6 +162,8 @@
 		1D23F58E1FC1D9E5006EC156 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1D4D891A1FCF4F29005432F0 /* CoreMedia.framework */,
+				1DC0103D1FCDF1570053903B /* libsandbox.1.tbd */,
 				1D23F58F1FC1D9E5006EC156 /* StreamingZip.framework */,
 			);
 			name = Frameworks;
@@ -278,8 +281,7 @@
 				1D23F56A1FC1D668006EC156 /* LaunchScreen.storyboard in Resources */,
 				1D23F5671FC1D668006EC156 /* Assets.xcassets in Resources */,
 				1D23F5941FC1E815006EC156 /* Payload.zip in Resources */,
-				1D23F5621FC1D667006EC156 /* Main.storyboard in Resources */,
-				1750BBA71FCB677E000D122E /* Credits.storyboard in Resources */,
+				17BFC4731FD0FEA4004FFB3F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,9 +306,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D4D891F1FCF53B0005432F0 /* PrivateAPIManager.m in Sources */,
 				1D23F55F1FC1D667006EC156 /* ViewController.m in Sources */,
 				1D23F55C1FC1D667006EC156 /* AppDelegate.m in Sources */,
-				1D23F5921FC1DB56006EC156 /* StreamingUnzipper.m in Sources */,
 				1D23F5651FC1D668006EC156 /* amfetamine.xcdatamodeld in Sources */,
 				1D23F5591FC1D667006EC156 /* main.m in Sources */,
 			);
@@ -344,14 +346,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1D23F5601FC1D667006EC156 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1D23F5611FC1D667006EC156 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1D23F5681FC1D668006EC156 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -465,7 +459,6 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = amfetamine/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mtjailed.amfetamine.ev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -482,7 +475,6 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = amfetamine/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mtjailed.amfetamine.ev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
